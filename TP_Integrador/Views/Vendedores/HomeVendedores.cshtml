@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "HomeVendedores";
+}
+
+<section class="vh-100 bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4">Bienvenido vendedor: @ListGlossary.usuarioLogeado</h1>
+                <button class="btn btn-success mt-4" onclick="location.href='@Url.Action("CrearPublicacion", "Vendedores")'">Crear Publicación</button>
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Nombre Vendedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Publicacion p in ListGlossary.publicaciones)
+                        {
+                            @if(p.NombreVendedor == ListGlossary.usuarioLogeado)
+                            {
+                                <tr>
+                                    <td>@p.Id</td>
+                                    <td>@p.Titulo</td>
+                                    <td>@p.Descripcion</td>
+                                    <td>@p.Precio</td>
+                                    <td>@p.NombreVendedor</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <button class="btn btn-success mt-4" onclick="location.href='@Url.Action("Index", "Home" )'">Cerrar Sesión</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+

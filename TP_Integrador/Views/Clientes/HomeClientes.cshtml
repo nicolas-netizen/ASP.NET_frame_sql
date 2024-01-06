@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "HomeCliente";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="display-4">¡Bienvenido, @ListGlossary.usuarioLogeado!</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center mt-4">Publicaciones</h2>
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Vendedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Publicacion p in ListGlossary.publicaciones)
+                        {
+                            <tr>
+                                <td>@p.Id</td>
+                                <td>@p.Titulo</td>
+                                <td>@p.Descripcion</td>
+                                <td>$@p.Precio</td>
+                                <td>@p.NombreVendedor</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto">
+            <button class="btn btn-primary" onclick="location.href = '@Url.Action("index", "Home")'">Cerrar sesión</button>
+        </div>
+    </div>
+</div>
